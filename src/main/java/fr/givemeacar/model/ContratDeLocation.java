@@ -9,5 +9,5 @@ public @Data class ContratDeLocation {
     private Vehicule vehicule;
     private Client client;
 
-
+//test
 }
