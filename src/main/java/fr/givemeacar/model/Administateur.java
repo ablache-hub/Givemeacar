@@ -10,11 +10,11 @@ public class Administateur extends Account {
 
     // CREATION DES AGENCES & MANAGERS
 
-    //public Agency createAgencyAccount(){
+    public Agence createAgencyAccount(){
+        return null;
+    }
 
-    //}
-
-    //public Manager createManagerAccount(){
-
-    //}
+    public Manager createManagerAccount(){
+        return null;
+    }
 }
