@@ -1,9 +1,13 @@
 package fr.givemeacar.model;
+import lombok.Data;
 
-public class ContratDeLocation {
+public @Data class ContratDeLocation {
 
-    int startLocation;
-    int endLocation;
+    private int startLocation;
+    private int endLocation;
+    private int price;
+    private Vehicule vehicule;
+    private Client client;
 
 
 }
