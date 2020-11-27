@@ -12,5 +12,4 @@ public @Data class Account {
     private String firstName;
 
 
-
 }
