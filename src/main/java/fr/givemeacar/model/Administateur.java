@@ -1,6 +1,8 @@
 package fr.givemeacar.model;
 
-public class Administateur extends Account {
+import lombok.Data;
+
+public @Data class Administateur extends Account {
 
     public Administateur() {
         super();
