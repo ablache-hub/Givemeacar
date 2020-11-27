@@ -9,6 +9,7 @@ function App() {
         <p>
           HELLO ROMAIN
           HELLO ALEX 2
+          HELLO AMIN
         </p>
         <a
           className="App-link"
