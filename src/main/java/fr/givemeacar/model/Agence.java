@@ -1,8 +1,11 @@
 package fr.givemeacar.model;
 
+import lombok.Data;
+
 import java.util.List;
 
-public class Agence {
+
+public @Data class Agence {
 
     int id;
     String name;
@@ -11,7 +14,7 @@ public class Agence {
     int vehiculeDispo;
     int vehiculeRevision;
 
-    //List<Vehicule> stock;
+    List<Vehicule> stock;
     List<Client> clientele;
 
 
