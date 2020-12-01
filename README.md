@@ -2,7 +2,7 @@
 
 ## Initialisation du projet Spring boot
 
-### Sur https://start.spring.io/ || Directement sur l'IDE via Spring Tools SUite (plugin) 
+### Sur https://start.spring.io/ || Directement sur l'IDE via Spring Tools Suite (plugin) 
 
 Choisir Project: "Maven Project", language: "Java", Spring boot: "2.4.0", Packaging: "jar", Java version: "8"  
 
@@ -171,4 +171,40 @@ Pour ça il faudra utiliser une vraie BDD Sql (ou NoSql) qu'on verra par la suit
 * Si l'on rentre `http://localhost:9090/Products/1` il nous renverra le client avec l'Id 1  
 * Si l'on veut éxécuter une autre requête, on va devoir utiliser Postman car le navigateur ne peut qu'executer des requêtes GET
 * Dans Postman, on peut créer des Post (en insérant une requête au format Json/Raw dans l'onglet 'body'), on peut Delete un client
-avec son id, ou mettre à jour avec Put et l'id d'un client déjà existant  
+avec son id, ou mettre à jour avec Put et l'id d'un client déjà existant
+
+
+## Initialisation de la BDD SQL
+
+* La bdd H2 par défaut de JPA est pratique pour les tests mais elle ne dispose pas de persistance de données ce qui ne la rend pas utile
+pour notre API, il faut donc créer une BDD SQL
+
+* Création du Schéma de notre Bdd Sql : 
+    * Aller sur workbench, cliquer sur *local instance 3306*, votre sql local
+    * Sur l'onglet 'Schéma' à gauche, faire un clic droit -> *create schema*
+    * Rentrer le nom de votre schema (qui sera en réalité votre bdd sql)
+    * *defaultCharset* = Utf-8
+    * *Collation* = utf8_general_ci
+    
+* Votre bdd est à présent créée, maintenant plus qu'à la lier avec votre API
+ 
+* Liaison de la Bdd Sql avec notre Api :  
+
+```
+# Configuration MySql
+
+spring.jpa.hibernate.ddl-auto=create-drop
+spring.datasource.url=jdbc:mysql://localhost:3306/givemeacar?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
+spring.datasource.username=root
+spring.datasource.password=root
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+```  
+* Il s'agit de la configuration de notre BDD Sql présent dans ``application.properties``
+* ``create-drop`` permet de créer la Bdd et de la mettre à jour à chaque fois qu'une donnée est rentré
+* ``url`` c'est là ou l'on va retrouver l'adresse ``localhost:3306`` de notre BDD (important de mettre Timezone/DateTime etc sinon ça marche pas)
+* Dans cette url on retrouve ``givemeacar``, c'est le nom du schéma créé (soit en ligne de commande/ workbench/phpmyadmin) qui va être en gros le nom de notre BDD 
+* ``username`` et ``password`` sont les identifiants de Sql 
+
+* Une fois la configuration réalisée, *run* l'API, *post* une nouvelle donnée via Postman (toujours en gardant le même localhost
+vu que c'est avec l'Api que va communiquer Postman, et non avec la Bdd directement)
+* Si tout s'est bien passé il doit y'avoir la donnée créer dans votre bdd 
