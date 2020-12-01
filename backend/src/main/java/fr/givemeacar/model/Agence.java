@@ -13,7 +13,6 @@ import javax.persistence.Id;
 public @Data class Agence {
 
 
-
     // Id auto-incrémenté
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +28,7 @@ public @Data class Agence {
 
     //List<Vehicule> stock;
     //List<Client> clientele;
+
 
 
     //List<Vehicule> stock;
