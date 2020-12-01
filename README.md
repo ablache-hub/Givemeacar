@@ -5,7 +5,10 @@
 ### Sur https://start.spring.io/ || Directement sur l'IDE via Spring Tools SUite (plugin) 
 
 Choisir Project: "Maven Project", language: "Java", Spring boot: "2.4.0", Packaging: "jar", Java version: "8"  
+
 Dépendances: Web, H2, Jpa, Devtools, Security, Thymeleaf(front) 
+
+
 
 Décompresser le projet et l'ouvrir avec le POM.xml dans l'IDE.
 
