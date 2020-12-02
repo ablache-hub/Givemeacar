@@ -208,3 +208,9 @@ spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5InnoDBDial
 * Une fois la configuration réalisée, *run* l'API, *post* une nouvelle donnée via Postman (toujours en gardant le même localhost
 vu que c'est avec l'Api que va communiquer Postman, et non avec la Bdd directement)
 * Si tout s'est bien passé il doit y'avoir la donnée créer dans votre bdd 
+
+### Utilisation de Ngrok
+
+L'application Ngrok sert à créer un tunnel entre un serveur local et le web, dans notre cas il permet de diffuser le "localhost" de notre application sur une adresse directement accessible en ligne.
+
+Pour cela, il suffit d'entrer ``Ngrok http 9090`` dans l'invité de commande de Ngrok (où 9090 correspond au port de notre localhost).
