@@ -208,3 +208,15 @@ spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5InnoDBDial
 * Une fois la configuration réalisée, *run* l'API, *post* une nouvelle donnée via Postman (toujours en gardant le même localhost
 vu que c'est avec l'Api que va communiquer Postman, et non avec la Bdd directement)
 * Si tout s'est bien passé il doit y'avoir la donnée créer dans votre bdd 
+
+
+## Initialisation de la BDD SQL à Distance 
+
+* Utilisation de alwaysData qui va nous créer une Bdd en ligne. L'intérêt est d'avoir une bdd partagée ou tout les admins ont
+accès -> https://admin.alwaysdata.com/database/?type=mysql
+* Cette bdd est stockée sur phpmyadmin.com -> https://phpmyadmin.alwaysdata.com/
+* On change donc dans ``application.properties``, les propriétés de notre nouvelle bdd, dont l'url, l'id et le mdp 
+* On peut toujours envoyer des requêtes http via Postman avec notre adresse de server localhost, et retrouver ces requêtes dans notre
+bdd sur phpmyadmin 
+
+## Utilisation de Ngrok 
