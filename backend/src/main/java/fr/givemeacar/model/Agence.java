@@ -12,16 +12,24 @@ import javax.persistence.Id;
 @Entity // table sql
 public @Data class Agence {
 
+
     // Id auto-incrémenté
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
 
     private String name;
     private String localisation;
     private int nombreVehicules;
     private int vehiculeDispo;
     private int vehiculeRevision;
+
+
+    //List<Vehicule> stock;
+    //List<Client> clientele;
+
+
 
     //List<Vehicule> stock;
     //List<Client> clientele;
