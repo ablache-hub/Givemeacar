@@ -219,4 +219,9 @@ accès -> https://admin.alwaysdata.com/database/?type=mysql
 * On peut toujours envoyer des requêtes http via Postman avec notre adresse de server localhost, et retrouver ces requêtes dans notre
 bdd sur phpmyadmin 
 
-## Utilisation de Ngrok 
+
+### Utilisation de Ngrok
+L'application Ngrok sert à créer un tunnel entre un serveur local et le web, dans notre cas il permet de diffuser le "localhost" de notre application sur une adresse directement accessible en ligne.
+
+Pour cela, il suffit d'entrer ``Ngrok http 9090`` dans l'invité de commande de Ngrok (où 9090 correspond au port de notre localhost).
+

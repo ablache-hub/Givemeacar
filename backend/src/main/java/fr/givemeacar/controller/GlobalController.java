@@ -57,11 +57,5 @@ public class GlobalController {
         agenceRepository.deleteById(id);
     }
 
-
-    
-
-
-
-    
     
 }
