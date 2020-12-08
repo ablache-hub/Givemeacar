@@ -220,8 +220,45 @@ accès -> https://admin.alwaysdata.com/database/?type=mysql
 bdd sur phpmyadmin 
 
 
-### Utilisation de Ngrok
+## Utilisation de Ngrok
 L'application Ngrok sert à créer un tunnel entre un serveur local et le web, dans notre cas il permet de diffuser le "localhost" de notre application sur une adresse directement accessible en ligne.
 
 Pour cela, il suffit d'entrer ``Ngrok http 9090`` dans l'invité de commande de Ngrok (où 9090 correspond au port de notre localhost).
 
+## Mise en relation des classes/tables 
+
+* Nos @Entity sont des classes qui vont pouvoir devenir des tables dans une BDD afin de pouvoir leur injecter/stocker des données. 
+* Pour que ces classes "deviennent" des tables, il faut utiliser des annotations fournies par JPA/Hibernate : 
+
+* Nous avons 2 classes : une class ``Artist`` et une ``Album`` . On sait qu'un *Artist* peut avoir plusieurs *Albums* mais qu'un *Album* ne 
+peut avoir qu'un seul *Artist* 
+  
+```
+@Entity
+public class Artist {
+    ...
+    @OneToMany(mappedBy = "artist")
+    private List<Album> albums;
+    ...
+}
+```
+
+* On aura donc une class ``Artist`` qui va contenir une List de ``type Album`` (vu qu'il y'a plusieurs albums), avec une relation 
+  ``@OnetoMany`` qui signifie "Un artist (*one*) peut avoir plusieurs (*many*) albums". 
+  ``(mappedby = "artist")`` signifie qu'un lien se créer entre notre class ``Artist`` et notre class ``Album`` via l'instance ``myArtist``
+  déclarée dans la class `Album` ci-dessous. 
+  
+```
+@Entity
+public class Album {
+    ...
+    @ManyToOne @JoinColumn(name = "myArtist_id")
+    private Artist myArtist;
+    ...
+}
+```
+
+* On aura donc une class ``Album`` qui va contenir une seul instance de ``type Artist`` (vu qu'un album ne peut avoir qu'un artist), 
+  avec une relation``@ManytoOne`` qui signifie "Plusieurs albums (*many*) peuvent n'avoir qu'un seul (*one*) artist". 
+``@JoinColumn`` est l'annotation de la *foreign key* ou *clé étrangère* qui permet de lier `Album` à `Artist`via `myArtist_id`, donc cette
+  annotation va permettre de retrouver les albums d'un Artist en particulier, différencié par son id. 
