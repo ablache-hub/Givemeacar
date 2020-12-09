@@ -209,7 +209,146 @@ spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5InnoDBDial
 vu que c'est avec l'Api que va communiquer Postman, et non avec la Bdd directement)
 * Si tout s'est bien passé il doit y'avoir la donnée créer dans votre bdd 
 
-### Utilisation de Ngrok
+
+## Initialisation de la BDD SQL à Distance 
+
+* Utilisation de alwaysData qui va nous créer une Bdd en ligne. L'intérêt est d'avoir une bdd partagée ou tout les admins ont
+accès -> https://admin.alwaysdata.com/database/?type=mysql
+* Cette bdd est stockée sur phpmyadmin.com -> https://phpmyadmin.alwaysdata.com/
+* On change donc dans ``application.properties``, les propriétés de notre nouvelle bdd, dont l'url, l'id et le mdp 
+* On peut toujours envoyer des requêtes http via Postman avec notre adresse de server localhost, et retrouver ces requêtes dans notre
+bdd sur phpmyadmin 
+
+
+## Utilisation de Ngrok
 L'application Ngrok sert à créer un tunnel entre un serveur local et le web, dans notre cas il permet de diffuser le "localhost" de notre application sur une adresse directement accessible en ligne.
 
 Pour cela, il suffit d'entrer ``Ngrok http 9090`` dans l'invité de commande de Ngrok (où 9090 correspond au port de notre localhost).
+
+## Mise en relation des classes/tables (manyToOne / oneToMany) 
+
+* Nos @Entity sont des classes qui vont pouvoir devenir des tables dans une BDD afin de pouvoir leur injecter/stocker des données. 
+* Pour que ces tables communiquent entres elles, il faut utiliser des annotations fournies par JPA/Hibernate : 
+
+* Nous avons 2 classes : une class ``Artist`` et une ``Album`` . On sait qu'un *Artist* peut avoir plusieurs *Albums* mais qu'un *Album* ne 
+peut avoir qu'un seul *Artist* 
+  
+```
+@Entity
+public class Artist {
+    ...
+    @OneToMany(mappedBy = "myArtist")
+    private List<Album> albums;
+    ...
+}
+```
+
+* On aura donc une class ``Artist`` qui va contenir une List de ``type Album`` (vu qu'il y'a plusieurs albums), avec une relation 
+  ``@OnetoMany`` qui signifie "Un artist (*one*) peut avoir plusieurs (*many*) albums". 
+  ``(mappedby = "myArtist")`` signifie qu'un lien se créer entre notre class ``Artist`` et notre class ``Album`` via l'instance ``myArtist``
+  déclarée dans la class `Album` ci-dessous. 
+  
+```
+@Entity
+public class Album {
+    ...
+    @ManyToOne @JoinColumn(name = "myArtist_id")
+    private Artist myArtist;
+    ...
+}
+```
+
+* On aura donc une class ``Album`` qui va contenir une seul instance de ``type Artist`` (vu qu'un album ne peut avoir qu'un artist), 
+  avec une relation``@ManytoOne`` qui signifie "Plusieurs albums (*many*) peuvent n'avoir qu'un seul (*one*) artist". 
+``@JoinColumn`` est l'annotation de la *foreign key* ou *clé étrangère* qui permet de lier `Album` à `Artist`via `myArtist_id`, donc cette
+  annotation va permettre de retrouver les albums d'un Artist en particulier, différencié par son id. 
+  
+* Le `@JoinColumn` rend la class maître de la relation bidirectionnelle. Pour savoir ou le mettre, il faut se demander "quelle table je dois
+  créer en premier ? " -> Ici, un artist peut être créer sans forcément qu'il ai un album (il peut avoir juste une piste/chanson), par contre
+  un album ne peut se créer sans artist, donc forcément la foreign key doit se retrouver sur album. 
+
+## Mise en relation des classes/tables (manyToMany) 
+
+* Ici la relation est plus complexe car chacune de nos class peut avoir plusieurs instances de l'autre. 
+
+* Une class `Playlist` peut avoir plusieurs `Track` (pistes) mais une class `Track` peut être dans plusieurs `Playlist`
+
+* C'est donc une relation `manyToMany` (plusieursToPlusieurs) qui pour fonctionner a besoin d'une nouvelle table qui reliera les 2 entre elles.
+
+* Il faut donc choisir qui sera la classe *Maitre* avec le `@JoinColumn`, et la logique voudrait `Playlist`, vu qu'on peut créer des tracks/
+pistes sans forcément avoir de Playlist, mais on ne peut pas créer de Playlist sans tracks, vu qu'une Playlist c'est un ensemble de tracks.
+
+```
+@Entity
+public class Playlist {
+    ...
+    @ManyToMany
+    @JoinTable(name = "playlist_track",
+               joinColumns = @JoinColumn(name = "playlist_id"),
+               inverseJoinColumns = @JoinColumn(name = "track_id")
+              )
+    List<Track> tracks;
+    ...
+}
+```
+
+* Ici on utilise `@JoinTable` pour créer la table intermédiare entre nos 2 class. Cette annotation prend plusieurs paramètres :  
+    - `name` qui est le nom attribué à notre table intermédiaire 
+    - `joinColumns` qui va être notre *foreign key* pour `Playlist`
+    - `inverseJoinColumns` qui va être la *foreign key* pour `Track`
+    
+*  On a ensuite une list de plusieurs `Track`
+
+```
+@Entity
+public class Track {
+    ...
+    @ManyToMany(mappedBy = "tracks")
+    private List<Playlist> playlists;
+    ...
+}
+```
+
+* Notre class `Track` va donc être la class "esclave/secondaire" qui va être mappé par son instance *tracks* créée dans la class `Playlist`
+et contenir une list de plusieurs `Playlists`
+  
+## Sérialization avec Jackson 
+
+* Une application mobile (fait en Js) va avoir besoin d'une donnée à afficher. Elle va donc faire une requête à une API (faite en java), qui
+elle même va faire une requête à une BDD. Cette Bdd va renvoyé un objet à l'API qui sera de la donnée Sql, convertie en Objet Java grâce à
+Jackson, puis l'API va renvoyer à son tour la donnée convertie en JSON grâce encore à Jackson, à notre application mobile. 
+  
+* Cette conversion est faite automatiquement grâce au `@RestController`, cependant il se peut parfois qu'il y'ait des erreurs ou des données
+spécifiques que l'on veuille envoyer en Json. 
+  
+* C'est ce qu'on appelle la *Sérialization*, grâce à quelques @annotations, on va pouvoir mieux gérer le renvoie de nos données Json. 
+
+    - `@JsonManagedReference` : permet de dire à Jackson que c'est la classe *Parent* et qu'il n'y a pas de traitement particulier entre la 
+    sérialization/désérialization, les données sont transmises naturellement.
+      
+    - `@JsonBackReference` : permet de dire à Jackson que c'est la classe *Enfant* et donc elle n'est pas prise en compte dans la sérialization
+    et que sa désérialization est classique, en d'autres termes, on ne renverra pas les données Java objet en données Json avec cette annotation.
+      
+    -`@JsonIdentitfyInfo` : permet de dire à Jackson qu'elle donnée précisémment que l'ou souhaite convertir en Json. `Property` en tant que
+    nom du champs de la clé primaire et `Scope` le type de ce champs. 
+  
+    -`@JsonIgnore` : permet de dire à Jackson d'ignorer cette donnée dans la conversion en Json
+  
+* Ces annotations vont être utiles pour l'envoie/réception (serialization/deserialization) de données mais en aucun cas ne va empêcher le
+stockage des données dans la BDD. Le fait de mettre `@JsonIgnore` sur une `@Entity` va empêcher de stocker les données de cette class, elles
+ne juste pas êtres converties et transférées à l'appel de l'API. 
+  
+* Un exemple intéressant c'est si on une class `Produit`, on va forcément avoir un `prixDeVente` et un `prixAchat` et notre prixAchat on 
+veut pas forcément le rendre visible aux utilisateurs. DOnc on peut utiliser `@JsonIgnore` sur le `prixAchat` pour ne pas le renvoyer
+  
+
+## @Service 
+
+* @Controller ou @RestController c'est plutôt pour la partie vue en mode affichage des données (couche de présentation) en front grâce 
+  aux requêtes http, donc que GET/POST/PUT/DELETE, et que Spring MVC va chercher l'annotation @RequestMapping associée au @RestController.
+  
+* Alors que @Service c'est vraiment la partie 'métier" (couche de gestion) en gros les méthodes qui font tourner ton application en mode 
+  une méthode qui va aller cherche un élément avec un prix spécifique (findItemByPrice()) ou mettre a jour un élément à une date précise 
+  (setupItemAtDateTime()). On est pas obligé de faire une class @Service mais c'est mieux pour l'organisation. 
+  
+* Exemple : 

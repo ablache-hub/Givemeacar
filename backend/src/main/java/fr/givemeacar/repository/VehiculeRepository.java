@@ -1,8 +1,10 @@
 package fr.givemeacar.repository;
 
-import fr.givemeacar.model.Agence;
+import fr.givemeacar.model.Vehicule;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AgenceRepository extends JpaRepository<Agence,Integer>{
+public interface VehiculeRepository extends JpaRepository<Vehicule,Integer>{
+
     //methods classiques
+
 }

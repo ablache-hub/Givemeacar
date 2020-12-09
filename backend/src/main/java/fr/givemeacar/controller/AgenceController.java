@@ -15,7 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController // Controller qui permet de réaliser des requêtes Http CRUD -> Api Rest
 
-public class GlobalController {
+public class AgenceController {
     
     @Autowired // instancie automatiquement le JPA
     private AgenceRepository agenceRepository;
@@ -57,11 +57,5 @@ public class GlobalController {
         agenceRepository.deleteById(id);
     }
 
-
-    
-
-
-
-    
     
 }
