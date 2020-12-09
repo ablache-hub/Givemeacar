@@ -1,12 +1,12 @@
 package fr.givemeacar.model;
 
+
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-//import java.util.List;
+import fr.givemeacar.model.Vehicule;
+
+import javax.persistence.*;
+import java.util.List;
 
 
 @Entity // table sql
@@ -25,9 +25,12 @@ public @Data class Agence {
     private int vehiculeDispo;
     private int vehiculeRevision;
 
+    @OneToMany
+    @JoinColumn(name = "vehicule_id")
+    List <Vehicule> stock;
 
-    //List<Vehicule> stock;
-    //List<Client> clientele;
+//    List <Utilisateur> clientele;
+
 
 
 
