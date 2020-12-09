@@ -1,13 +1,9 @@
 package fr.givemeacar.model;
 
-import fr.givemeacar.unuse.Manager;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -18,13 +14,11 @@ public class Administrateur extends Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    public Administrateur() {
-        super();
-    }
 
 
 
-    // CREATION DES AGENCES & MANAGERS
+
+     /*CREATION DES AGENCES & MANAGERS
 
     public Agence createAgencyAccount(){
         return null;
@@ -32,6 +26,6 @@ public class Administrateur extends Account {
 
     public Manager createManagerAccount(){
         return null;
-    }
+    }*/
 
 }
