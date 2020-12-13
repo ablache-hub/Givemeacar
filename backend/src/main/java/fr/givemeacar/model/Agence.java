@@ -3,7 +3,7 @@ package fr.givemeacar.model;
 
 import lombok.Data;
 
-import fr.givemeacar.model.Vehicule;
+//import fr.givemeacar.model.Vehicule;
 
 import javax.persistence.*;
 import java.util.List;
@@ -25,9 +25,8 @@ public @Data class Agence {
     private int vehiculeDispo;
     private int vehiculeRevision;
 
-    @OneToMany
-    @JoinColumn(name = "vehicule_id")
-    List <Vehicule> stock;
+    @OneToMany(mappedBy = "agence")
+    private List<Vehicule> stock;
 
 //    List <Utilisateur> clientele;
 

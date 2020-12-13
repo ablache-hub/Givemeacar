@@ -1,13 +1,10 @@
 package fr.givemeacar.model;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.*;
 
 @Entity
-@Table(name="vehicule")
+//@Table(name="vehicule")
 public @Data class Vehicule {
 
     @Id
@@ -21,5 +18,6 @@ public @Data class Vehicule {
     private int coordonneesGPS;
 
 
-
+    @ManyToOne @JoinColumn
+    private Agence agence;
 }

@@ -1,17 +1,20 @@
 package fr.givemeacar.controller;
 import fr.givemeacar.model.Utilisateur;
-import fr.givemeacar.model.Agence;
 import fr.givemeacar.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+
+
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
+@RestController
 public class UtilisateurController {
+
 
     @Autowired // instancie automatiquement le JPA
     private UtilisateurRepository utilisateurRepository;
