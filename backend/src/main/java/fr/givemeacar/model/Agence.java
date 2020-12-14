@@ -1,6 +1,7 @@
 package fr.givemeacar.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 //import fr.givemeacar.model.Vehicule;
@@ -26,7 +27,8 @@ public @Data class Agence {
     private int vehiculeRevision;
 
     @OneToMany(mappedBy = "agence")
-    private List<Vehicule> stock;
+    @JsonBackReference
+    private List<Vehicule> stock; //todo
 
 //    List <Utilisateur> clientele;
 
