@@ -5,6 +5,7 @@ import fr.givemeacar.repository.VehiculeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -15,8 +16,16 @@ public class AgenceServiceImpl implements AgenceService {
     @Autowired
     VehiculeRepository vehiculeRepository;
 
+    // GET stock vehicules
     @Override
     public List<Vehicule> getStockVehicules(int id) {
         return vehiculeRepository.findByAgenceId(id);
+    }
+
+    // GET vehicule dispo
+    @Override
+    public  List<Vehicule> getVehiculeDispo(boolean dispo) {
+        return vehiculeRepository.findByDisponibilityLocation(dispo);
+
     }
 }

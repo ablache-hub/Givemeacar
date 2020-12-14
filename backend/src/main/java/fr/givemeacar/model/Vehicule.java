@@ -15,7 +15,8 @@ public @Data class Vehicule {
     private String marque;
     private String modele;
     private int price;
-    private boolean state;
+    private boolean disponibilityLocation;
+    private boolean inRevision;
     private int coordonneesGPS;
 
 

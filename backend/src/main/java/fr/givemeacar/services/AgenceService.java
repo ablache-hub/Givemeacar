@@ -8,4 +8,10 @@ public interface AgenceService {
 
     // On créer une fonction qui va permettre de donner le stock par agence
     public List<Vehicule> getStockVehicules(int id);
+
+    public List<Vehicule> getVehiculeDispo(boolean dispo);
+
+
+
+
 }
