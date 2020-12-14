@@ -1,4 +1,5 @@
 package fr.givemeacar.model;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -18,6 +19,7 @@ public @Data class Vehicule {
     private int coordonneesGPS;
 
 
-    @ManyToOne @JoinColumn
+    @ManyToOne @JoinColumn // todo name
+    @JsonManagedReference
     private Agence agence;
 }

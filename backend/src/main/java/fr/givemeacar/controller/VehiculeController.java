@@ -1,19 +1,13 @@
 package fr.givemeacar.controller;
 
 import fr.givemeacar.model.Vehicule;
-import fr.givemeacar.repository.VehiculeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import fr.givemeacar.services.VehiculeService;
-import fr.givemeacar.services.VehiculeServiceImpl;
+import fr.givemeacar.services.AgenceService;
 
-import java.net.URI;
 import java.util.List;
-import java.util.Optional;
-
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
 @RestController // Controller qui permet de réaliser des requêtes Http CRUD -> Api Rest
@@ -24,7 +18,7 @@ public class VehiculeController {
     private VehiculeRepository vehiculeRepository;*/
 
     @Autowired
-    VehiculeService service;
+    AgenceService agenceService;
 
    /* // Renvoie tous nos produits
     @GetMapping(value="/Vehicule")
@@ -63,13 +57,13 @@ public class VehiculeController {
 
     /* On fait une requête GET qui permet de retrouver le stock vehicule d'une agence par son id */
 
-    @GetMapping(value = "/agence/{id}/vehicule")
+    @GetMapping(value = "/agences/{id}/vehicules")
 
     public ResponseEntity<List<Vehicule>> getAllVehicule(@PathVariable(value="id") int id) {
 
         List<Vehicule> listVehicule;
         try {
-            listVehicule = service.findByAgence(id);
+            listVehicule = agenceService.getStockVehicules(id);
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
