@@ -7,7 +7,9 @@ import java.util.List;
 
 public interface VehiculeRepository extends JpaRepository<Vehicule,Integer>{
 
-    //On ajoute une nouvelle fonction qui va permettre de trouver une agence par son @Id
+    //On ajoute une nouvelle fonction qui va nous retourner le stock d'une agence par son @Id
     public List<Vehicule> findByAgenceId(int agenceId);
+
+    public List<Vehicule> findByDisponibilityLocation(boolean disponibility_location);
 
 }

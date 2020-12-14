@@ -55,9 +55,9 @@ public class VehiculeController {
     }*/
 
 
-    /* On fait une requête GET qui permet de retrouver le stock vehicule d'une agence par son id */
+    /* GET ALL VEHICULES */
 
-    @GetMapping(value = "/agences/{id}/vehicules")
+    @GetMapping(value = "/agences/{id}/vehicules/")
 
     public ResponseEntity<List<Vehicule>> getAllVehicule(@PathVariable(value="id") int id) {
 
@@ -69,6 +69,13 @@ public class VehiculeController {
         }
         return ResponseEntity.ok().body(listVehicule);
     }
+
+    /* POST VEHICULE */
+
+    /* PUT VEHICULE */
+
+    /* DELETE VEHICULE */
+
 
 
 }
