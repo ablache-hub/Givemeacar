@@ -26,19 +26,22 @@ public class AgenceController {
     @Autowired // instancie automatiquement le JPA
     private AgenceRepository agenceRepository;
     
-    // Renvoie tous nos produits 
+    // Renvoie tous nos produits
+    @CrossOrigin
     @GetMapping(value="/Agence")
      List<Agence> allAgency() {
         return agenceRepository.findAll();
     }
     
-    // Renvoie un item via son id  
+    // Renvoie un item via son id
+    @CrossOrigin
     @GetMapping(value="/Agence/{id}")
     public Optional<Agence> agencyById(@PathVariable int id){
         return agenceRepository.findById(id);
     }
     
-    // Créer un item 
+    // Créer un item
+    @CrossOrigin
     @PostMapping(value="/Agence")
     public ResponseEntity<Void> createAgency(@RequestBody Agence agence ) {
         Agence savedAgence = agenceRepository.save(agence); // on stock dans la var 'savedAgence' l'agence créée, de type Agence
@@ -52,12 +55,14 @@ public class AgenceController {
     }
 
     // Mettre à jour un item déjà existant
+    @CrossOrigin
     @PutMapping(value="/Agence")
     public void updateAgency(@RequestBody Agence agence ) {
          agenceRepository.save(agence);
     }
 
     // Supprimer un item via son Id
+    @CrossOrigin
     @DeleteMapping(value="/Agence/{id}")
     public void deleteAgency(@PathVariable int id){
         agenceRepository.deleteById(id);
