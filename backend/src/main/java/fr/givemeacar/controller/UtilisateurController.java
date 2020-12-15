@@ -1,6 +1,7 @@
 package fr.givemeacar.controller;
 import fr.givemeacar.model.Utilisateur;
 import fr.givemeacar.repository.UtilisateurRepository;
+import fr.givemeacar.services.AgenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,9 @@ public class UtilisateurController {
 
     @Autowired // instancie automatiquement le JPA
     private UtilisateurRepository utilisateurRepository;
+
+    @Autowired
+    AgenceService agenceService;
 
     // Renvoie tous nos produits
     @GetMapping(value = "/Utilisateur")
@@ -56,5 +60,21 @@ public class UtilisateurController {
         utilisateurRepository.save(utilisateur);
 
     }
+
+    /* GET all Utilisateurs */
+    @GetMapping(value = "/Agence/{id}/Utilisateur")
+
+    public ResponseEntity<List<Utilisateur>> getAllUtilisateurs(@PathVariable(value="id") int id) {
+
+        List<Utilisateur> listUtilisateur;
+        try {
+            listUtilisateur = agenceService.getListClientele(id);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok().body(listUtilisateur);
+    }
+
+    /*POST Utilisateur*/
 
 }

@@ -1,7 +1,10 @@
 package fr.givemeacar.controller;
 
 import fr.givemeacar.model.Agence;
+import fr.givemeacar.model.Utilisateur;
+import fr.givemeacar.model.Vehicule;
 import fr.givemeacar.repository.AgenceRepository;
+import fr.givemeacar.services.AgenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +14,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @RestController // Controller qui permet de réaliser des requêtes Http CRUD -> Api Rest
@@ -56,6 +62,8 @@ public class AgenceController {
     public void deleteAgency(@PathVariable int id){
         agenceRepository.deleteById(id);
     }
+
+    
 
     
 }
