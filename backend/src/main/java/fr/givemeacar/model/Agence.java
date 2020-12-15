@@ -28,15 +28,15 @@ public @Data class Agence {
 
     @OneToMany(mappedBy = "agence")
     @JsonBackReference
-    private List<Vehicule> stock; //todo
+    private List<Vehicule> stockVehicules; //todo
 
-//    List <Utilisateur> clientele;
+    @OneToMany(mappedBy = "agence")
+    @JsonBackReference
+    private List<Utilisateur> clientele;
 
 
 
 
-    //List<Vehicule> stock;
-    //List<Client> clientele;
 
 
     /* METHODS

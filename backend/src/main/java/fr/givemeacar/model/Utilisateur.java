@@ -1,5 +1,6 @@
 package fr.givemeacar.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -16,6 +17,10 @@ public class Utilisateur extends Account {
     private int id;
 
     String adresse;
+
+    @ManyToOne @JoinColumn
+    @JsonManagedReference
+    private Agence agence;
 
     //ArrayList<Vehicule> historique = new ArrayList<Vehicule>();
 
