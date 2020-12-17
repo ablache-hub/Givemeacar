@@ -3,7 +3,7 @@ import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
-export default function AccueilManager() {
+export default function ProfilManager() {
 
 
     const [dataManager, setDataManager] = useState([]);
