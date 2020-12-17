@@ -21,8 +21,9 @@ export default function ProfilManager() {
 
 
     return (
-        <div className="card mx-5 mt-4 col-2 col-sm-4 col-md-4 col-lg-4 col-xl-4" align="center">
-            <h5 className="card-title">{dataManager.name}</h5>
+        <div className="card container round mx-5 mt-4 col-2 col-sm-4 col-md-4 col-lg-4 col-xl-4"
+             align="center">
+            <h5 className="card-title" style={{color: '#FA983A', fontSize: '2rem'}}>{dataManager.localisation}</h5>
             <img
                 src="https://product-image.juniqe-production.juniqe.com/media/catalog/product/seo-cache/x800/171/172/171-172-202L-Black/Al-Pacino-as-Tony-Montana-in-Scarface--Vintage-Photography-Archive-Affiche-sous-cadre-standard.jpg"
                 className="card-img-top rounded-circle mx-auto d-block" alt="..."
@@ -32,7 +33,7 @@ export default function ProfilManager() {
                 <p className="card-text"></p>
             </div>
             <ul className="list-group list-group-flush">
-                <li className="list-group-item">{dataManager.localisation}</li>
+                <li className="list-group-item"></li>
                 <li className="list-group-item">Dapibus ac facilisis in</li>
                 <li className="list-group-item">Vestibulum at eros</li>
             </ul>

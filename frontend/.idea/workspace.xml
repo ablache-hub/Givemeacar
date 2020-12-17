@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d69439b-a5be-411c-850c-acfbf82de714" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/AddVehiculePopup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/fr/givemeacar/model/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/fr/givemeacar/model/Manager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ProfilManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ProfilManager.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +15,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -46,9 +44,23 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\utilisateur\Desktop\Simplon\Projets\Fil Rouge - Givemeacar\frontend\src" />
       <recent name="C:\Users\utilisateur\Desktop\Simplon\Projets\Fil Rouge - Givemeacar\frontend\src\Components" />
       <recent name="C:\Users\utilisateur\Desktop\Simplon\Projets\Fil Rouge - Givemeacar\frontend\src\Pages" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -63,6 +75,7 @@
       <workItem from="1608115429963" duration="735000" />
       <workItem from="1608124528361" duration="9073000" />
       <workItem from="1608196073112" duration="1905000" />
+      <workItem from="1608208761129" duration="365000" />
     </task>
     <servers />
   </component>
