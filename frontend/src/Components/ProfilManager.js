@@ -33,9 +33,9 @@ export default function ProfilManager() {
                 <p className="card-text"></p>
             </div>
             <ul className="list-group list-group-flush">
-                <li className="list-group-item"></li>
-                <li className="list-group-item">Dapibus ac facilisis in</li>
-                <li className="list-group-item">Vestibulum at eros</li>
+                <li className="list-group-item">{dataManager.name}</li>
+                <li className="list-group-item">{dataManager.localisation}</li>
+                <li className="list-group-item">Nombre véhicules: {dataManager.nombreVehicules}</li>
             </ul>
             <div className="card-body">
                 <a href="#" className="card-link">Card link</a>

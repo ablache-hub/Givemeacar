@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d69439b-a5be-411c-850c-acfbf82de714" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/fr/givemeacar/controller/AgenceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/fr/givemeacar/controller/AgenceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/fr/givemeacar/model/Vehicule.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/fr/givemeacar/model/Vehicule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/ProfilManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ProfilManager.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,7 +76,7 @@
       <workItem from="1608115429963" duration="735000" />
       <workItem from="1608124528361" duration="9073000" />
       <workItem from="1608196073112" duration="1905000" />
-      <workItem from="1608208761129" duration="365000" />
+      <workItem from="1608208761129" duration="2543000" />
     </task>
     <servers />
   </component>
