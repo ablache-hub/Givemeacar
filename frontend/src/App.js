@@ -4,6 +4,7 @@ import AddVehiculePopup from './Components/AddVehiculePopup'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ProfilManager from "./Components/ProfilManager"
 import ManagerInterface from './Pages/ManagerInterface'
+import Font from './App.css'
 
 function App() {
     return (
@@ -12,7 +13,7 @@ function App() {
             {/*<ManagerInterface/>*/}
             {/*<AddVehiculePopup/>*/}
 
-            {/*<ProfilManager/>*/}
+            <ProfilManager/>
         </div>
     );
 }
