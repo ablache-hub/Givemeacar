@@ -20,7 +20,7 @@ export default function StockVehicule() {
                                 checked={false}
                                 onlabel='On'
                                 offlabel='Off'
-                                size="sm"
+                                size="xs"
                                 onstyle="info"
                                 offstyle="danger"
                             />

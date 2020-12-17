@@ -20,21 +20,21 @@ export default function StockVehicule() {
                                 checked={false}
                                 onlabel='On'
                                 offlabel='Off'
-                                size="sm"
+                                size="xs"
                                 onstyle="info"
                                 offstyle="danger"
                             />
                         </div>
                         <div className="my-1">
                             <em className="d-inline mr-2 ">Changer la localisation</em>
-                            <BootstrapSwitchButton
+                            {/* <BootstrapSwitchButton
                                 checked={false}
                                 onlabel='On'
                                 offlabel='Off'
-                                size="sm"
+                                size="xs"
                                 onstyle="info"
                                 offstyle="danger"
-                            />
+                            /> */}
                         </div>
                         <div class="card-footer">
                             <button className="btn btn-block btn-danger ">Supprimer vehicule</button>

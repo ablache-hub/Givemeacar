@@ -20,7 +20,7 @@ export default function StockVehicule() {
                                 checked={false}
                                 onlabel='On'
                                 offlabel='Off'
-                                size="sm"
+                                size="xs"
                                 onstyle="info"
                                 offstyle="danger"
                             />
@@ -31,7 +31,7 @@ export default function StockVehicule() {
                                 checked={false}
                                 onlabel='On'
                                 offlabel='Off'
-                                size="sm"
+                                size="xl"
                                 onstyle="info"
                                 offstyle="danger"
                             />

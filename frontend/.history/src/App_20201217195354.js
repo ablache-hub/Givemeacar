@@ -4,7 +4,7 @@ import AffichageAgence from './Components/AffichageAgence'
 import AddVehiculePopup from './Components/AddVehiculePopup'
 import ProfilManager from "./Components/ProfilManager"
 import ManagerInterface from './Pages/ManagerInterface'
-import './Style/style.scss'
+import './Style/'
 
 function App() {
     return (

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import BootstrapSwitchButton from 'bootstrap-switch-button-react'
-export default function StockVehicule() {
+²export default function StockVehicule() {
 
 
     return (
@@ -16,25 +15,25 @@ export default function StockVehicule() {
                         </div>
                         <div className="my-1">
                             <em className="d-inline mr-2 ">Véhicule en révision</em>
-                            <BootstrapSwitchButton
+                            {/* <BootstrapSwitchButton
                                 checked={false}
                                 onlabel='On'
                                 offlabel='Off'
-                                size="sm"
+                                size="xs"
                                 onstyle="info"
                                 offstyle="danger"
-                            />
+                            /> */}
                         </div>
                         <div className="my-1">
                             <em className="d-inline mr-2 ">Changer la localisation</em>
-                            <BootstrapSwitchButton
+                            {/* <BootstrapSwitchButton
                                 checked={false}
                                 onlabel='On'
                                 offlabel='Off'
-                                size="sm"
+                                size="xs"
                                 onstyle="info"
                                 offstyle="danger"
-                            />
+                            /> */}
                         </div>
                         <div class="card-footer">
                             <button className="btn btn-block btn-danger ">Supprimer vehicule</button>
