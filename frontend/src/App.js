@@ -10,10 +10,10 @@ function App() {
     return (
         <div className="App">
             {/* <Agence /> */}
-            <Header/>
+            {/*<Header/>*/}
             {/*<ManagerInterface/>*/}
-            <AddVehiculePopup/>
-            {/*<ProfilManager/>*/}
+            {/*<AddVehiculePopup/>*/}
+            <ProfilManager/>
         </div>
     );
 }
