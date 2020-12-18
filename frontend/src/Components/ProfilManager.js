@@ -27,7 +27,6 @@ export default function ProfilManager() {
     return (
         <>
             <div className="card mx-5 mt-5 col-2 col-sm-4 col-md-4 col-lg-4 col-xl-4" align="center">
-
                 <h5 className="card-title mt-3" style={{color: '#FA983A', fontSize: '2rem'}}>{dataAgence.name}</h5>
                 <img
                     src="https://product-image.juniqe-production.juniqe.com/media/catalog/product/seo-cache/x800/171/172/171-172-202L-Black/Al-Pacino-as-Tony-Montana-in-Scarface--Vintage-Photography-Archive-Affiche-sous-cadre-standard.jpg"
