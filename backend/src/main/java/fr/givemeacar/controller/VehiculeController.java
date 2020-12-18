@@ -56,7 +56,7 @@ public class VehiculeController {
 
 
     /* GET ALL VEHICULES */
-
+@CrossOrigin
     @GetMapping(value = "/agences/{id}/vehicules/")
 
     public ResponseEntity<List<Vehicule>> getAllVehicule(@PathVariable(value="id") int id) {
