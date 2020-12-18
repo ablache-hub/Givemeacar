@@ -1,17 +1,18 @@
 import Agence from './Components/Agence'
+import Header from './Components/Header'
 import AffichageAgence from './Components/AffichageAgence'
 import AddVehiculePopup from './Components/AddVehiculePopup'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import ProfilManager from "./Components/ProfilManager"
 import ManagerInterface from './Pages/ManagerInterface'
+import './Style/style.scss'
 
 function App() {
     return (
         <div className="App">
             {/* <Agence /> */}
-            {/*<ManagerInterface/>*/}
-            <AddVehiculePopup/>
-
+            <Header/>
+            <ManagerInterface/>
+            {/*<AddVehiculePopup/>*/}
             {/*<ProfilManager/>*/}
         </div>
     );
