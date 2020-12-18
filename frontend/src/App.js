@@ -13,7 +13,6 @@ function App() {
             <Header/>
             <ManagerInterface/>
             {/*<AddVehiculePopup/>*/}
-
             {/*<ProfilManager/>*/}
         </div>
     );
