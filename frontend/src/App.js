@@ -11,8 +11,8 @@ function App() {
         <div className="App">
             {/* <Agence /> */}
             <Header/>
-            <ManagerInterface/>
-            {/*<AddVehiculePopup/>*/}
+            {/*<ManagerInterface/>*/}
+            <AddVehiculePopup/>
             {/*<ProfilManager/>*/}
         </div>
     );
