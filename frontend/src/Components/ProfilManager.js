@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 export default function ProfilManager() {
 
     const id = 7;
-    // const [dataManager, setDataManager] = useState([]);
+    const [dataUtilisateur, setDataUtilisateur] = useState([]);
     const [dataAgence, setDataAgence] = useState([]);
 
 
@@ -14,8 +14,8 @@ export default function ProfilManager() {
 
         async function fetchData() {
 
-            // const url1 = await axios('http://localhost:9090/agences/' + id + '/vehicules/');
-            // setDataManager(url1.data)
+            const url1 = await axios('http://localhost:9090/Agence/' + id + '/Utilisateur');
+            setDataUtilisateur(url1.data)
             const url2 = await axios('http://localhost:9090/Agence/' + id);
             setDataAgence(url2.data)
         }
@@ -38,7 +38,7 @@ export default function ProfilManager() {
 
                 <div className="card rounded w-75 mb-4 mt-3 col align-self-center">
                     <h5 className="card-title mt-3" style={{color: '#FA983A', fontSize: '1rem'}}>Status du parc</h5>
-                    <dl className=" card-text ml-3 mt-3 mb-3">
+                    <dl className="card-text ml-3 mt-3 mb-3">
                         <dd className=" card-text">
                             Nombre de vehicules: {dataAgence.nombreVehicules}
                         </dd>
@@ -53,11 +53,13 @@ export default function ProfilManager() {
 
                 <div className="card rounded w-75 mb-4 mt-2 col align-self-center">
                     <h5 className="card-title mt-3" style={{color: '#FA983A', fontSize: '1rem'}}>Clientèle</h5>
-                    <dl className=" card-text ml-3 mt-2 mb-3">
-                        <dd className=" card-text">
-                            Liste clients
-                        </dd>
+                    {/*<dl className=" card-text ml-3 mt-2 mb-3">*/}
+                    <dl className="card-text ml-3 mt-3 mb-3">
+                        {dataUtilisateur.map((current) => (
+                            <dd className=" card-text">{current.id} - {current.firstName}&nbsp;{current.name}</dd>
+                        ))}
                     </dl>
+
                 </div>
                 {/*<ul className=" list-group list-group-flush">
                     <li className=" list-group-item"></li>
