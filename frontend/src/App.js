@@ -10,7 +10,7 @@ function App() {
         <div className="App">
             {/* <Agence /> */}
             {/*<ManagerInterface/>*/}
-            {/*<AddVehiculePopup/>*/}
+            <AddVehiculePopup/>
 
             {/*<ProfilManager/>*/}
         </div>
